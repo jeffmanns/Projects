@@ -13,7 +13,10 @@ public class MorseCode {
 		this.characters = characters;
 		this.dotsAndDashes= dotsAndDashes;
 	}
-
+	
+	public MorseCode() {
+		
+	}
 	
 	//GETTERS AND SETTERS
 	
@@ -32,7 +35,7 @@ public class MorseCode {
 	public void setDotsAndDashes(String dotsAndDashes) {
 		this.dotsAndDashes = dotsAndDashes;
 	}
-	
+	 
 	//OTHER METHODS
 
 }
