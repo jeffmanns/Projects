@@ -24,10 +24,6 @@ public class MorseCodeApp {
 			}
 		}
 
-//		for(MorseCode m : morseCodeList) {
-//			System.out.println(m.getCharacters() + " " + m.getDotsAndDashes());
-//		}
-
 		// READ INPUT FROM USER
 
 		System.out.println("-----------------------------------------------------------------------");
@@ -42,14 +38,13 @@ public class MorseCodeApp {
 
 			userInput = morseCodeInput.nextLine();
 
-			// MorseCodeApp app = new MorseCodeApp(); // created an object so I can call the
-			// converter method
-
 			System.out.println(userInput + " in Morse Code is: " + converter(userInput, morseCodeList));
 			System.out.println("Would you like to run again? (Y/N) ");
 			userInput = morseCodeInput.nextLine();
 		} while (userInput.equalsIgnoreCase("y"));
 	}
+	
+	//METHOD TO ITERATE THROUGH USER INPUT STRING AND RETURN STRING AS TRANSLATED SERIES OF DOTS AND DASHES
 
 	public static String converter(String userInput, List<MorseCode> morseCodeList) {
 
