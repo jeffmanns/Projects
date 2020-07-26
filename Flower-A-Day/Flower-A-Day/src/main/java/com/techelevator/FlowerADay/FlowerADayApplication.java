@@ -9,6 +9,7 @@ public class FlowerADayApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(FlowerADayApplication.class, args);
+
 	}
 	
 	Flower flower = new Flower();
@@ -20,16 +21,16 @@ public class FlowerADayApplication {
 		return restTemplate.getForObject(API_BASE_URL + "flowers&image_type=photo", Flower[].class);
 	}
 	
-	public static Flower[] searchFlowersByColor(String color) {
-		return restTemplate.getForObject(API_BASE_URL + color + "+flowers" + "&image_type=photo", Flower[].class);
+	public static Flower[] searchFlowersByColor() {
+		return restTemplate.getForObject(API_BASE_URL + flower.getRandomColor() + "+flowers" + "&image_type=photo", Flower[].class);
 	}
 	
-	public static Flower[] searchFlowersByType(String flowerType) {
-		return restTemplate.getForObject(API_BASE_URL + flowerType + "+flowers" + "&image_type=photo", Flower[].class);
+	public static Flower[] searchFlowersByType() {
+		return restTemplate.getForObject(API_BASE_URL + flower.getRandomFlowerType() + "+flowers" + "&image_type=photo", Flower[].class);
 	}
 	
-	public static Flower[] searchFlowersByColorAndType(String color, String flowerType) {
-		return restTemplate.getForObject(API_BASE_URL + color + "+" + flowerType + "+flowers" + "&image_type=photo", Flower[].class);
+	public static Flower[] searchFlowersByColorAndType() {
+		return restTemplate.getForObject(API_BASE_URL + flower.getRandomColor() + "+" + flower.getRandomFlowerType() + "+flowers" + "&image_type=photo", Flower[].class);
 	}
 	
 
