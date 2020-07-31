@@ -21,12 +21,13 @@ public class FlowerADayApplication {
 		final String API_BASE_URL = "https://pixabay.com/api/?key=17646055-e0e93f137cbae14c739247758&q=";
 		RestTemplate restTemplate = new RestTemplate();
 		
-		String requestedFlower = restTemplate.getForObject(API_BASE_URL + flower.getRandomColor() + "+" + flower.getRandomFlowerType() + "+flowers&image_type=photo", String.class);
-		System.out.println(requestedFlower);
+		String flowerRequest = restTemplate.getForObject(API_BASE_URL + flower.getRandomColor() + "+" + flower.getRandomFlowerType() + "+flowers&image_type=photo", String.class);
+		System.out.println(flowerRequest);
 		
 		try {
-			JsonNode jsonNode = objectMapper.readTree(requestedFlower);
-			String flowerURL = jsonNode.at("/hits/largeImageURL").asText();
+			JsonNode jsonNode = objectMapper.readTree(flowerRequest);
+			String flowerURL = jsonNode.path("hits").path(0).path("largeImageURL").asText();
+			System.out.println(flowerURL);
 		} catch (JsonMappingException e) {
 			e.printStackTrace();
 		} catch (JsonProcessingException e) {
