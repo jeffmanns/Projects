@@ -24,6 +24,8 @@ public class FlowerADayApplication {
 		String flowerRequest = restTemplate.getForObject(API_BASE_URL + flower.getRandomColor() + "+" + flower.getRandomFlowerType() + "+flowers&image_type=photo", String.class);
 		System.out.println(flowerRequest);
 		
+		// PARSE JSON STRING INTO A JsonNode OBJECT AND RETRIEVE DATA FROM A NODE REPRESENTING THE URL FROM ONE FLOWER
+		
 		try {
 			JsonNode jsonNode = objectMapper.readTree(flowerRequest);
 			String flowerURL = jsonNode.path("hits").path(0).path("largeImageURL").asText();
@@ -33,6 +35,10 @@ public class FlowerADayApplication {
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
+		
+		// SEND EMAIL
+		
+		
 		
 		
 	}
